@@ -15,6 +15,125 @@
 
 # My learning
 
+## Misc
+Type of:
+
+```javascript
+typeof('hello'); // String
+```
+
+## Objects
+
+Dict in python. Except keys are normal text.
+
+```javascript
+let obj = {name: 'Tieg', age: 21};
+```
+
+You can also make use of the stdlib _JSON_ class to print an object.
+
+```javascript
+let obj = {name: 'Tieg', age: 21};
+JSON.stringify(obj); // {"name":"Tieg","age":21}
+```
+
+You can also make use of the stdlib _Object_ class to get the keys or values of an object.
+
+```javascript
+let obj = {name: 'Tieg', age: 21};
+Object.keys(obj); // name,age
+Object.values(obj); // Tieg,21
+```
+
+## Arrays
+
+Very similar to python. Init the same way as well.
+
+## Loops
+
+Some javascript loops.
+
+```javascript
+let arr = ['apple', 'pear', 'jam', 'cheese'];
+
+// for of loop
+for (let n of arr) {
+    console.log(n);
+}
+
+// for i loop
+for (let i = 0; i < arr.length; i++) {
+    console.log(`${i}) ${arr[i]}`);
+}
+
+// for each loop (n)
+arr.forEach(function(n) {
+    console.log(n);
+});
+
+// for each loop (n, i)
+arr.forEach(function(n, i) {
+    console.log(`${i}) ${n}`);
+});
+
+// while loop
+let i = 0;
+while (i < arr.length) {
+    log(`${i}) ${arr[i]}`);
+    i++;
+}
+
+// do while loop
+i = 0;
+do {
+    log(`${i}) ${arr[i]}`);
+    i++;
+} while (i < arr.length);
+```
+
+We also have _break_ and _continue_, which work as expected.
+
+## If statements
+
+Work like any other if statements. However there are also tripple equals. Where types and value has to be equal.
+
+```javascript
+'1' == 1; // true
+'1' === 1; // false
+'1' != 1; // false
+'1' !== 1; // true
+```
+
+## Map
+
+A callback function that is applied to every index of an array during a transformation. The map returns a new array, not editing the original array.
+
+```javascript
+[2, 3, 7, 1].map(function(n) {
+    return n*2;
+}); // [4,6,14,2]
+```
+
+## Filter
+
+A callback function that returns True or False on every item in an array. If True, the item remains in the array. If False, the item is removed from the array. The filter returns a new array, not editing the original array.
+
+```javascript
+[2, 3, 7, 1].filter(function(n, i) {
+    return i > 2;
+}); // [1]
+```
+
+## Reduce
+
+A callback function that reduces an array to a numeric value. The reduce returns a new array, not editing the original array.
+
+```javascript
+[2, 3, 7, 1].reduce(function(accumulator, n) {
+    return accumulator+n*2;
+}); // 0 + 2, 2 + 3, 5 + 7, 12 + 1 = 13
+```
+
 ## Template Literals
 
 This is similar to the f'' syntax in python. It allows us to format variables into strings.  The sintax like this:
