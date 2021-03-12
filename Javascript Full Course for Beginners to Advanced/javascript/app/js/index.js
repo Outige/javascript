@@ -8,3 +8,13 @@ import { log, logTitle } from 'logger';
 logTitle('Map | Filter | Reduce')
 /* coding examples */
 
+class Person {
+    constructor() {
+
+    }
+
+    static cough() {
+        log('cough');
+    }
+}
+Person.cough();

@@ -22,6 +22,14 @@ Type of:
 typeof('hello'); // String
 ```
 
+Default values:
+
+```javascript
+function tip(bill, tipPercentage=0.15) {
+    return bill*tipPercentage;
+}
+```
+
 ## Objects
 
 Dict in python. Except keys are normal text.
@@ -319,3 +327,93 @@ const add = (a, b) => a+b;
 ```
 
 If we only had 1 argument, the function could be even shorter.
+
+# This
+
+Similar to java. The this keyword is used to define context when refrencing a variable.
+
+```javascript
+const person = {
+  name: 'Alex',
+  cars: ['ferrari', 'lambo'],
+  toString: function() {
+    this.cars.forEach(car => {
+      consol.log(`${this.name} has ${car}`);
+    }.bind(this));
+  }
+}
+```
+
+The code above shows what happens when you go into a forEarch (for example). The this context is lost. We use the .bind(this) code to keep the context.
+
+We can also save the context before entering the forEach. `const that = this;`.
+
+Also arrow function mess with this a little bit.
+
+## Classes
+
+Simple class example
+
+```javascript
+class Animal {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    eat() {
+        log(`${this.name} is eating`);
+    }
+}
+
+const dog = new Animal('Guinness', 6);
+dog.eat();
+```
+
+### Inheritance
+
+```javascript
+class Animal {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    eat() {
+        log(`${this.name} is eating`);
+    }
+}
+
+class Cat extends Animal {
+    constructor(name, age, colour) {
+        super(name, age) // call to the super constructor
+        this.colour = colour;
+    }
+
+    logColour() {
+        log(this.colour);
+        super.eat(); // able to call on super class methods
+    }
+}
+
+const cat = new Cat('sushi', 1, 'black');
+cat.logColour();
+cat.eat();
+```
+
+### Static methods
+
+Like in java. Allow us to make calls to functions of classes, without needing an instance.
+
+```javascript
+class Person {
+    constructor() {
+
+    }
+
+    static cough() {
+        log('cough');
+    }
+}
+Person.cough();
+```
