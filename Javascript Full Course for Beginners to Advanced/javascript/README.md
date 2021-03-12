@@ -134,19 +134,6 @@ A callback function that reduces an array to a numeric value. The reduce returns
 }); // 0 + 2, 2 + 3, 5 + 7, 12 + 1 = 13
 ```
 
-## Template Literals
-
-This is similar to the f'' syntax in python. It allows us to format variables into strings.  The sintax like this:
-
-```javascript
-let name = 'Sarah';
-let age = 27;
-let literal = `Name ${name}, Age ${age}`;
-consol.log(literal);
------
-Name Sarah, Age 27
-```
-
 ## Let & Var
 
 Both are keywords that init variables. var leads to variable scope that can be undesiarable. Example.
@@ -161,6 +148,111 @@ consol.log(i);
 ```
 
 With var, i maintains variable scope after the for loop, which might be undesiarable. The use of let would lead to an error here, because i won't be defined after the for loop
+
+## Callbacks
+
+Call backs are functions that take function pointers and use the previously defined function inside of themself.
+
+```javascript
+let fancy = function(name) {
+    consol.log(`Good morrow ${name}`);
+}
+
+let greeter = function(name, callback) {
+    callback(name);
+}
+
+greeter('Tieg', fancy); // Good morrow Tieg
+```
+
+## Named Imports / Exports
+
+All imports have to be done before any logic.
+
+Assume a directory like this.
+
+```
+.
+├── app.js
+└── Math.js
+```
+
+Math.js:
+
+```javascript
+export var add = function(n1, n2) {
+    return n1 + n2;
+}
+
+export var PI = 3.14;
+```
+
+Then we can import * from Math
+
+```javascript
+import * as Math from './Math.js';
+
+console.log(`${Math.PI}`); // 3.14
+```
+
+Note: While testing the above code, I liked app.js to html, then opened the html in chrome. I got a cors error. The problem is that chrome doesn't like us loading js from the local file system. The solution was to run index.html as a live server.
+
+We can also import specific modules from Math
+
+```javascript
+import {PI} from './Math.js';
+
+console.log(`${PI}`); // 3.14
+```
+
+## Default exports
+
+This is where you can export a single value. Often a class.
+
+Assume a directory like this.
+
+```
+.
+├── Animal.js
+└── app.js
+```
+
+Animal.js:
+
+```javascript
+export default class Animal{
+  constructor() {
+    console.log("i am an animal");
+  }
+  getClassType() {
+    return "Animal";
+  }
+}
+```
+
+We can import and use the Animal class like this
+
+```javascript
+import AnimalClass from './Animal.js';
+
+let animalInstant = new AnimalClass(); // i am an animal (due to constructor)
+animalInstant.getClassType(); // Animal
+```
+
+Note that _AnimalClass_ is just a reference name that can be anything.
+
+## Template Literals
+
+This is similar to the f'' syntax in python. It allows us to format variables into strings.  The sintax like this:
+
+```javascript
+let name = 'Sarah';
+let age = 27;
+let literal = `Name ${name}, Age ${age}`;
+consol.log(literal);
+-----
+Name Sarah, Age 27
+```
 
 ## Spread Operator
 
